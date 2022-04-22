@@ -17,20 +17,17 @@ public class Main {
          */
 
         User[] users = new User[4];
-        users[0] = new User("Eduard 15", "Sharipov 1", (byte) 45);
-        users[1] = new User("Eduard 17", "Sharipov 2", (byte) 46);
-        users[2] = new User("Eduard 19", "Sharipov 3", (byte) 47);
-        users[3] = new User("Eduard 20", "Sharipov 4", (byte) 48);
+
 
         final UserService userService = new UserServiceImpl();
-        //final UserDaoJDBCImpl userService = new UserDaoJDBCImpl();
 
 
         userService.dropUsersTable();
         userService.createUsersTable();
-        for (int i = 0; i < 4; i++) {
-            userService.saveUser(users[i].getName(), users[i].getLastName(), users[i].getAge());
-        }
+        userService.saveUser("Eduard 15", "Sharipov 1", (byte) 45);
+        userService.saveUser("Eduard 17", "Sharipov 2", (byte) 46);
+        userService.saveUser("Eduard 19", "Sharipov 3", (byte) 47);
+        userService.saveUser("Eduard 20", "Sharipov 4", (byte) 48);
         userService.getAllUsers().stream().forEach(System.out::println);
         userService.removeUserById(1);
         userService.removeUserById(3);
@@ -39,6 +36,7 @@ public class Main {
             System.out.println(usr.toString());
         }
         userService.cleanUsersTable();
+        userService.saveUser("Eduard 20", "Sharipov 4", (byte) 48);
         System.out.println("<<< App is finished >>>");
     }
 }

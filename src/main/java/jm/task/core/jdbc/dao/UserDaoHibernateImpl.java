@@ -32,7 +32,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createNativeQuery(query).addEntity(User.class);
             session.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println("User table was dropped");
+            System.out.println("User table wasn't cxreated" + e.getMessage());
         } finally {
             session.close();
         }
@@ -124,7 +124,7 @@ public class UserDaoHibernateImpl implements UserDao {
             e.printStackTrace();
         } finally {
             session.close();
-            util.closeSessionFactory();
+            //util.closeSessionFactory();
         }
     }
 }
