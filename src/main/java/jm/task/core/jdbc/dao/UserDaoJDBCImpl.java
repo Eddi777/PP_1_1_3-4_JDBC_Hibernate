@@ -11,7 +11,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
 
     private final Util util;
-    private Connection conn;
     public UserDaoJDBCImpl() {
         util = new Util();
     }
